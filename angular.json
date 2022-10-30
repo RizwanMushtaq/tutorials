@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "fluid-typography": "apps/fluid-typography",
+    "fluid-typography-e2e": "apps/fluid-typography-e2e"
+  }
+}

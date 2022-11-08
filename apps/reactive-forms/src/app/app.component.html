@@ -1,20 +1,65 @@
 <div class="container">
   <div class="row">
     <div class="column">
-      <div class="heading"><h1>Reactive Forms Tutorial</h1></div>
-      <form class="form" (submit)="submit()">
-        <input class="input" placeholder="username" type="text" id="username" />
-        <input
-          class="input"
-          placeholder="password"
-          type="password"
-          id="password"
-        />
-        <button type="submit" class="button">Login</button>
+      <form [formGroup]="loginForm" class="form" (ngSubmit)="submit()">
+        <h1>Reactive Forms</h1>
+        <div class="input-wrapper">
+          <input
+            class="input"
+            formControlName="username"
+            type="text"
+            placeholder="username"
+          />
+          <ng-container
+            *ngIf="
+              loginForm.controls.username.invalid &&
+              loginForm.controls.username.touched
+            "
+          >
+            <div *ngIf="loginForm.controls.username.errors?.['required']">
+              username is required
+            </div>
+            <div *ngIf="loginForm.controls.username.errors?.['minlength']">
+              min char length 4 is required
+            </div>
+          </ng-container>
+        </div>
+        <div class="input-wrapper">
+          <input
+            class="input"
+            formControlName="password"
+            type="password"
+            placeholder="password"
+          />
+          <ng-container
+            *ngIf="
+              loginForm.controls.password.invalid &&
+              loginForm.controls.password.touched
+            "
+          >
+            <div *ngIf="loginForm.controls.password.errors?.['required']">
+              username is required
+            </div>
+            <div *ngIf="loginForm.controls.password.errors?.['minlength']">
+              min char length 6 is required
+            </div>
+          </ng-container>
+        </div>
+        <div class="button-wrapper">
+          <button
+            [disabled]="loginForm.invalid ? 'disabled' : null"
+            [ngClass]="loginForm.invalid ? 'disabled' : ''"
+            class="button"
+            type="submit"
+          >
+            submit
+          </button>
+        </div>
+        <div>
+          <p>username : {{ loginForm.controls.username.value }}</p>
+          <p>password : {{ loginForm.controls.password.value }}</p>
+        </div>
       </form>
-      <div class="registration-link">
-        <p>register here now</p>
-      </div>
     </div>
   </div>
 </div>

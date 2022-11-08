@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="column">
+      <div class="heading"><h1>Reactive Forms Tutorial</h1></div>
+
+      <form [formGroup]="loginForm" class="form" (ngSubmit)="submit()">
+        <input
+          formControlName="username"
+          class="input"
+          placeholder="username"
+          type="text"
+        />
+        <ng-container
+          *ngIf="loginForm.invalid && loginForm.controls.username.touched"
+        >
+          <div
+            class="alert"
+            *ngIf="loginForm.controls.username.errors?.['required']"
+          >
+            username is required
+          </div>
+
+          <div
+            class="alert"
+            *ngIf="loginForm.controls.username.errors?.['minlength']"
+          >
+            min length is 4 chars
+          </div>
+        </ng-container>
+
+        <input
+          formControlName="password"
+          class="input"
+          placeholder="password"
+          type="password"
+        />
+        <ng-container
+          *ngIf="loginForm.invalid && loginForm.controls.password.touched"
+        >
+          <div
+            class="alert"
+            *ngIf="loginForm.controls.password.errors?.['required']"
+          >
+            password is required
+          </div>
+        </ng-container>
+
+        <button type="submit" class="button">Login</button>
+      </form>
+
+      <div>
+        <p>username: {{ loginForm.controls.username.value }}</p>
+        <p>password: {{ loginForm.controls.password.value }}</p>
+      </div>
+    </div>
+  </div>
+</div>

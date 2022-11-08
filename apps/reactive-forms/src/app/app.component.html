@@ -16,32 +16,65 @@
               loginForm.controls.username.touched
             "
           >
-            <div *ngIf="loginForm.controls.username.errors?.['required']">
+            <div
+              class="alert"
+              *ngIf="loginForm.controls.username.errors?.['required']"
+            >
               username is required
             </div>
-            <div *ngIf="loginForm.controls.username.errors?.['minlength']">
+            <div
+              class="alert"
+              *ngIf="loginForm.controls.username.errors?.['minlength']"
+            >
               min char length 4 is required
+            </div>
+            <div
+              class="alert"
+              *ngIf="loginForm.controls.username.errors?.['pattern']"
+            >
+              characters other than alphabets not allowed
             </div>
           </ng-container>
         </div>
         <div class="input-wrapper">
-          <input
-            class="input"
-            formControlName="password"
-            type="password"
-            placeholder="password"
-          />
+          <div class="password-input-wrapper">
+            <input
+              class="input"
+              formControlName="password"
+              [attr.type]="showPassword ? 'text' : 'password'"
+              placeholder="password"
+            />
+            <div class="icon-wrapper">
+              <img
+                (click)="toggelShowPassword()"
+                src="assets/eye-regular.svg"
+                alt="eye-icon"
+              />
+            </div>
+          </div>
           <ng-container
             *ngIf="
               loginForm.controls.password.invalid &&
               loginForm.controls.password.touched
             "
           >
-            <div *ngIf="loginForm.controls.password.errors?.['required']">
-              username is required
+            <div
+              class="alert"
+              *ngIf="loginForm.controls.password.errors?.['required']"
+            >
+              password is required
             </div>
-            <div *ngIf="loginForm.controls.password.errors?.['minlength']">
+            <div
+              class="alert"
+              *ngIf="loginForm.controls.password.errors?.['minlength']"
+            >
               min char length 6 is required
+            </div>
+            <div
+              class="alert"
+              *ngIf="loginForm.controls.password.errors?.['pattern']"
+            >
+              must include character, number and special character
             </div>
           </ng-container>
         </div>

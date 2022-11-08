@@ -62,7 +62,31 @@
             }
           }
         }
+        .alert {
+          color: red;
+        }
       }
+    }
+  }
+}
+
+.password-input-wrapper {
+  position: relative;
+
+  .icon-wrapper {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    width: 30px;
+    height: 100%;
+    padding-right: 16px;
+
+    img {
+      width: 100%;
+      height: 100%;
+
+      cursor: pointer;
     }
   }
 }

@@ -1,0 +1,92 @@
+.container {
+  font-family: 'Open Sans';
+  .row {
+    .column {
+      margin: auto;
+
+      .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+
+        .input-wrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+
+          .ng-untouched {
+            border: 2px solid lightblue;
+          }
+          .ng-touched.ng-invalid {
+            border: 2px solid red;
+          }
+          .ng-touched.ng-valid {
+            border: 2px solid green;
+          }
+          .ng-dirty.ng-valid {
+            border: 2px solid green;
+          }
+
+          .input {
+            width: 400px;
+            height: 48px;
+            font-size: 24px;
+            padding-left: 16px;
+            border-radius: 5px;
+
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+        .button-wrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .button {
+            font-size: 24px;
+            width: 200px;
+            height: 48px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            background-color: #82c1e8;
+
+            &.disabled {
+              cursor: auto;
+              background-color: lightgray;
+            }
+          }
+        }
+        .alert {
+          color: red;
+        }
+      }
+    }
+  }
+}
+
+.password-input-wrapper {
+  position: relative;
+
+  .icon-wrapper {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    width: 30px;
+    height: 100%;
+    padding-right: 16px;
+
+    img {
+      width: 100%;
+      height: 100%;
+
+      cursor: pointer;
+    }
+  }
+}
